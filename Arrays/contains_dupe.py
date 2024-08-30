@@ -1,13 +1,11 @@
-class Solution {
-    public boolean containsDuplicate(int[] nums) {
-        Set<Integer> set = new HashSet<Integer>();
-        for (int num : nums) {
-        if (set.contains(num)) {
-            return true;
-        } else {
-            set.add(num);
-        };
-        };
-        return false;
-    }
-}
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        # create dict to store freqs
+        dict = {}
+        # iterate over nums
+        for num in nums:
+            if num in dict:
+                return True
+            else:
+                dict[num] = 1
+        return False
