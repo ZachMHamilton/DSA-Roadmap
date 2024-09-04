@@ -14,7 +14,7 @@ class Vector:
     return self.size == 0
 
   def at(self, index):
-    if (index > self.size):
+    if index > self.size:
       raise Exception('Index out of bounds')
     else:
       return self.data[index]
@@ -23,4 +23,14 @@ class Vector:
     if self.size >= self.capacity:
       self.capacity *= 2
     self.data[self.size] = item
+    self.size += 1
+
+  def insert(self, item, index):
+    if index > self.size:
+      raise Exception('Index out of bounds')
+    if self.size + 1 > self.capacity:
+      self.capacity *= 2
+    for i in range(self.size - 1, index - 1, -1):
+      self.data[i + 1] = self.data[i]
+    self.data[index] = item
     self.size += 1
