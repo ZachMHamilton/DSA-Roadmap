@@ -619,7 +619,7 @@ if you can identify the runtime complexity of different algorithms. It's a super
             - start with 16, or if the starting number is greater, use power of 2 - 16, 32, 64, 128
         - [x] size() - number of items
         - [x] capacity() - number of items it can hold
-        - [ ] is_empty()
+        - [x] is_empty()
         - [ ] at(index) - returns the item at a given index, blows up if index out of bounds
         - [ ] push(item)
         - [ ] insert(index, item) - inserts item at index, shifts that index's value and trailing elements to the right

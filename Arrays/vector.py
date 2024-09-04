@@ -9,3 +9,9 @@ class Vector:
   
   def get_capacity(self):
     return self.capacity
+  
+  def is_empty(self):
+    if self.size == 0:
+      return True
+    else:
+      return False
