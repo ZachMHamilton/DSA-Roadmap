@@ -4,3 +4,7 @@ class Vector:
     self.size = 0
     self.data = [None] * self.capacity
 
+  def getSize(self):
+    return self.size
+  
+  
