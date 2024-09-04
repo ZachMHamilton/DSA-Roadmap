@@ -4,7 +4,8 @@ class Vector:
     self.size = 0
     self.data = [None] * self.capacity
 
-  def getSize(self):
+  def get_size(self):
     return self.size
   
-  
+  def get_capacity(self):
+    return self.capacity
