@@ -11,13 +11,16 @@ class Vector:
     return self.capacity
   
   def is_empty(self):
-    if self.size == 0:
-      return True
-    else:
-      return False
+    return self.size == 0
 
   def at(self, index):
-    if (index > self.capacity - 1):
+    if (index > self.size):
       raise Exception('Index out of bounds')
     else:
       return self.data[index]
+    
+  def push(self, item):
+    if self.size >= self.capacity:
+      self.capacity *= 2
+    self.data[self.size] = item
+    self.size += 1
