@@ -15,3 +15,9 @@ class Vector:
       return True
     else:
       return False
+
+  def at(self, index):
+    if (index > self.capacity - 1):
+      raise Exception('Index out of bounds')
+    else:
+      return self.data[index]
