@@ -20,24 +20,21 @@ class Vector:
       return self.data[index]
     
   def push(self, item):
-    if self.size >= self.capacity:
-      self.__resize(self.capacity * 2)
+    self.__resize(self.size + 1)
     self.data[self.size] = item
     self.size += 1
 
   def insert(self, item, index):
     if index > self.size:
       raise Exception('Index out of bounds')
-    if self.size + 1 > self.capacity:
-      self.__resize(self.capacity * 2)
+    self.__resize(self.size + 1)
     for i in range(self.size - 1, index - 1, -1):
       self.data[i + 1] = self.data[i]
     self.data[index] = item
     self.size += 1
 
   def prepend(self, item):
-    if self.size + 1 > self.capacity:
-      self.__resize(self.capacity * 2)
+    self.__resize(self.size + 1)
     for i in range(self.size - 1, 1, -1):
       self.data[i + 1] = self.data[i]
     self.data[0] = item
@@ -48,6 +45,7 @@ class Vector:
       raise Exception('Array is empty')
     item = self.data[self.size - 1]
     self.size -= 1
+    self.__resize(self.size)
     self.data[self.size] = None
     return item
   
@@ -58,6 +56,7 @@ class Vector:
       self.data[i] = self.data[i + 1]
     self.data[self.size - 1] = None
     self.size -= 1
+    self.__resize(self.size)
 
   def remove(self, item):
     for i in range(self.size):
@@ -66,6 +65,7 @@ class Vector:
           self.data[j] = self.data[j + 1]
         self.size -= 1
         self.data[self.size] = None
+        self.__resize(self.size)
         return
     raise Exception('Item not found')    
     
@@ -75,13 +75,19 @@ class Vector:
         return i
     return -1
   
-  def __resize(self, new_capacity):
-    # Create a new list with the new capacity
+  def __resize(self, new_size):
+    new_capacity = self.capacity
+
+    if (new_size > self.capacity):
+      new_capacity = self.capacity * 2
+    elif new_size >= 16 and new_size <= self.capacity // 4:
+      new_capacity = self.capacity // 2
+
     new_data = [None] * new_capacity
-    # Copy existing elements to the new list
+
     for i in range(self.size):
         new_data[i] = self.data[i]
-    # Update the vector's data and capacity
+  
     self.data = new_data
     self.capacity = new_capacity
 
