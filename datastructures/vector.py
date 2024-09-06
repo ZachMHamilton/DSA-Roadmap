@@ -45,6 +45,7 @@ class Vector:
       raise Exception('Array is empty')
     item = self.data[self.size - 1]
     self.size -= 1
+    print(self.size)
     self.__resize(self.size)
     self.data[self.size] = None
     return item
@@ -80,8 +81,8 @@ class Vector:
 
     if (new_size > self.capacity):
       new_capacity = self.capacity * 2
-    elif new_size >= 16 and new_size <= self.capacity // 4:
-      new_capacity = self.capacity // 2
+    elif new_size <= self.capacity // 4:
+      new_capacity = max(self.capacity // 2, 16)
 
     new_data = [None] * new_capacity
 
@@ -90,4 +91,3 @@ class Vector:
   
     self.data = new_data
     self.capacity = new_capacity
-
