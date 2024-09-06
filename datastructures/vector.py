@@ -60,7 +60,7 @@ class Vector:
     self.size -= 1
 
   def remove(self, item):
-    for i in range(self.size - 1):
+    for i in range(self.size):
       if self.data[i] == item:
         for j in range(i, self.size - 1):
           self.data[j] = self.data[j + 1]
@@ -69,3 +69,8 @@ class Vector:
         return
     raise Exception('Item not found')    
     
+  def find(self, item):
+    for i in range(self.size):
+      if self.data[i] == item:
+        return i
+    return -1
