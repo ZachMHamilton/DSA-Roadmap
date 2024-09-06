@@ -43,3 +43,10 @@ class Vector:
     self.data[0] = item
     self.size += 1
       
+  def pop(self):
+    if self.size == 0:
+      raise Exception('Array is empty')
+    item = self.data[self.size - 1]
+    self.size -= 1
+    self.data[self.size] = None
+    return item
