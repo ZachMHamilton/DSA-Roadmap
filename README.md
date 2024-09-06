@@ -625,7 +625,7 @@ if you can identify the runtime complexity of different algorithms. It's a super
         - [x] insert(index, item) - inserts item at index, shifts that index's value and trailing elements to the right
         - [x] prepend(item) - can use insert above at index 0
         - [x] pop() - remove from end, return value
-        - [ ] delete(index) - delete item at index, shifting all trailing elements left
+        - [x] delete(index) - delete item at index, shifting all trailing elements left
         - [ ] remove(item) - looks for value and removes index holding it (even if in multiple places)
         - [ ] find(item) - looks for value and returns first index with that value, -1 if not found
         - [ ] resize(new_capacity) // private function
