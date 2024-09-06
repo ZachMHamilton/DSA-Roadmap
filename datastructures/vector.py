@@ -51,10 +51,21 @@ class Vector:
     self.data[self.size] = None
     return item
   
-  def remove(self, index):
+  def delete(self, index):
     if index > self.size - 1:
       raise Exception('Index out of bounds')
     for i in range(index, self.size - 1):
       self.data[i] = self.data[i + 1]
     self.data[self.size - 1] = None
     self.size -= 1
+
+  def remove(self, item):
+    for i in range(self.size - 1):
+      if self.data[i] == item:
+        for j in range(i, self.size - 1):
+          self.data[j] = self.data[j + 1]
+        self.size -= 1
+        self.data[self.size] = None
+        return
+    raise Exception('Item not found')    
+    
