@@ -21,7 +21,7 @@ class Vector:
     
   def push(self, item):
     if self.size >= self.capacity:
-      self.capacity *= 2
+      self.__resize(self.capacity * 2)
     self.data[self.size] = item
     self.size += 1
 
@@ -29,7 +29,7 @@ class Vector:
     if index > self.size:
       raise Exception('Index out of bounds')
     if self.size + 1 > self.capacity:
-      self.capacity *= 2
+      self.__resize(self.capacity * 2)
     for i in range(self.size - 1, index - 1, -1):
       self.data[i + 1] = self.data[i]
     self.data[index] = item
@@ -37,7 +37,7 @@ class Vector:
 
   def prepend(self, item):
     if self.size + 1 > self.capacity:
-      self.capacity *= 2
+      self.__resize(self.capacity * 2)
     for i in range(self.size - 1, 1, -1):
       self.data[i + 1] = self.data[i]
     self.data[0] = item
@@ -74,3 +74,14 @@ class Vector:
       if self.data[i] == item:
         return i
     return -1
+  
+  def __resize(self, new_capacity):
+    # Create a new list with the new capacity
+    new_data = [None] * new_capacity
+    # Copy existing elements to the new list
+    for i in range(self.size):
+        new_data[i] = self.data[i]
+    # Update the vector's data and capacity
+    self.data = new_data
+    self.capacity = new_capacity
+
